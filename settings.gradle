@@ -1,3 +1,5 @@
 rootProject.name = 'CamundaEdu'
 
 include 'CamundaBootstrapping'
+include 'CamundaServices'
+include 'CamundaServices:RepositoryService'

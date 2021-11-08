@@ -1,4 +1,4 @@
-package com.github.hlam;
+package com.github.hlam.signals;
 
 import org.camunda.bpm.engine.ProcessEngine;
 import org.camunda.bpm.engine.ProcessEngineConfiguration;
@@ -16,14 +16,14 @@ public class MainStartBySignal {
         RepositoryService repositoryService = processEngine.getRepositoryService();
         repositoryService.createDeployment()
                 .name("Signal Process")
-                .addClasspathResource("signalProcess.bpmn")
+                .addClasspathResource("signals/signalProcess.bpmn")
                 .deploy();
         System.out.println("Number of deploys = " + repositoryService.createDeploymentQuery().count());
         System.out.println("Number of deployed process = " + repositoryService.createProcessDefinitionQuery().count());
 
         repositoryService.createDeployment()
                 .name("Signal Process 1")
-                .addClasspathResource("signalProcess1.bpmn")
+                .addClasspathResource("signals/signalProcess1.bpmn")
                 .deploy();
         System.out.println("Number of deploys = " + repositoryService.createDeploymentQuery().count());
         System.out.println("Number of deployed process = " + repositoryService.createProcessDefinitionQuery().count());

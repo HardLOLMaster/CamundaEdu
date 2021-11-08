@@ -32,6 +32,10 @@ public class MainStartBySignal {
 
         runtimeService.signalEventReceived("startSignal", Map.of("InputVariable", "InputValue"));
 
+        runtimeService.createSignalEvent("startSignal")
+            .setVariables(Map.of("InputVariable", "InputValue"))
+            .send();
+
         processEngine.close();
     }
 }

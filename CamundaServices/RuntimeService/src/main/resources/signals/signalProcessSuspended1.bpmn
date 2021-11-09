@@ -5,7 +5,7 @@
       <bpmn:outgoing>Flow_05x1btk</bpmn:outgoing>
     </bpmn:startEvent>
     <bpmn:sequenceFlow id="Flow_05x1btk" sourceRef="StartEvent_1" targetRef="Activity_1n1wt2n" />
-    <bpmn:serviceTask id="Activity_1n1wt2n" camunda:class="com.github.hlam.signals.BeforeDelegate">
+    <bpmn:serviceTask id="Activity_1n1wt2n" camunda:class="com.github.hlam.BeforeDelegate">
       <bpmn:incoming>Flow_05x1btk</bpmn:incoming>
       <bpmn:outgoing>Flow_04kei8w</bpmn:outgoing>
     </bpmn:serviceTask>
@@ -29,11 +29,11 @@
     </bpmn:intermediateCatchEvent>
     <bpmn:sequenceFlow id="Flow_0tc9ekg" sourceRef="Event_1sv7zqp" targetRef="Activity_1a2r5i5" />
     <bpmn:sequenceFlow id="Flow_1yfho7m" sourceRef="Event_1ad1jkw" targetRef="Activity_1ojn0w7" />
-    <bpmn:serviceTask id="Activity_1ojn0w7" camunda:class="com.github.hlam.signals.PathBDelegate">
+    <bpmn:serviceTask id="Activity_1ojn0w7" camunda:class="com.github.hlam.PathBDelegate">
       <bpmn:incoming>Flow_1yfho7m</bpmn:incoming>
       <bpmn:outgoing>Flow_0xm02vv</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:serviceTask id="Activity_1a2r5i5" camunda:class="com.github.hlam.signals.PathADelegate">
+    <bpmn:serviceTask id="Activity_1a2r5i5" camunda:class="com.github.hlam.PathADelegate">
       <bpmn:incoming>Flow_0tc9ekg</bpmn:incoming>
       <bpmn:outgoing>Flow_1ykron1</bpmn:outgoing>
     </bpmn:serviceTask>
@@ -45,7 +45,7 @@
     </bpmn:inclusiveGateway>
     <bpmn:sequenceFlow id="Flow_0xm02vv" sourceRef="Activity_1ojn0w7" targetRef="Gateway_0g6qavo" />
     <bpmn:sequenceFlow id="Flow_188vaj8" sourceRef="Gateway_0g6qavo" targetRef="Activity_0152tsk" />
-    <bpmn:serviceTask id="Activity_0152tsk" camunda:class="com.github.hlam.signals.AfterDelegate">
+    <bpmn:serviceTask id="Activity_0152tsk" camunda:class="com.github.hlam.AfterDelegate">
       <bpmn:incoming>Flow_188vaj8</bpmn:incoming>
       <bpmn:outgoing>Flow_11949f9</bpmn:outgoing>
     </bpmn:serviceTask>

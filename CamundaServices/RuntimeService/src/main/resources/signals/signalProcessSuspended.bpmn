@@ -14,13 +14,13 @@
       <bpmn:incoming>Flow_0wr4j52</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_0wr4j52" sourceRef="Activity_0sev2a1" targetRef="Event_0sjcpsk" />
-    <bpmn:serviceTask id="Activity_0sev2a1" camunda:class="com.github.hlam.signals.AfterDelegate">
+    <bpmn:serviceTask id="Activity_0sev2a1" camunda:class="com.github.hlam.AfterDelegate">
       <bpmn:incoming>Flow_159sdr9</bpmn:incoming>
       <bpmn:outgoing>Flow_0wr4j52</bpmn:outgoing>
     </bpmn:serviceTask>
     <bpmn:sequenceFlow id="Flow_05x1btk" sourceRef="StartEvent_1" targetRef="Activity_1n1wt2n" />
     <bpmn:sequenceFlow id="Flow_1ekqsib" sourceRef="Activity_1n1wt2n" targetRef="waitEvent" />
-    <bpmn:serviceTask id="Activity_1n1wt2n" camunda:class="com.github.hlam.signals.BeforeDelegate">
+    <bpmn:serviceTask id="Activity_1n1wt2n" camunda:class="com.github.hlam.BeforeDelegate">
       <bpmn:incoming>Flow_05x1btk</bpmn:incoming>
       <bpmn:outgoing>Flow_1ekqsib</bpmn:outgoing>
     </bpmn:serviceTask>

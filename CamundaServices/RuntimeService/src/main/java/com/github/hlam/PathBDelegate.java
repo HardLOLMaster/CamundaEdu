@@ -1,4 +1,4 @@
-package com.github.hlam.signals;
+package com.github.hlam;
 
 import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;

@@ -1,11 +1,12 @@
-package com.github.hlam.signals;
+package com.github.hlam;
 
 import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
 
-public class PathADelegate implements JavaDelegate {
+public class BeforeDelegate implements JavaDelegate {
     @Override
     public void execute(DelegateExecution execution) {
-        System.out.println("Path A Delegate");
+        System.out.println("------");
+        System.out.println("Before delegate");
     }
 }

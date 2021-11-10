@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_00ygly5" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.10.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.15.0">
+  <bpmn:process id="startMessageProcess1" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_1vkm9ku</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_1gtpgp6" messageRef="Message_1xq21zk" />
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_1vkm9ku" sourceRef="StartEvent_1" targetRef="Activity_1yft3rn" />
+    <bpmn:endEvent id="Event_04uso02">
+      <bpmn:incoming>Flow_08yoywl</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_08yoywl" sourceRef="Activity_1yft3rn" targetRef="Event_04uso02" />
+    <bpmn:serviceTask id="Activity_1yft3rn" camunda:class="com.github.hlam.JavaTestDelegate">
+      <bpmn:incoming>Flow_1vkm9ku</bpmn:incoming>
+      <bpmn:outgoing>Flow_08yoywl</bpmn:outgoing>
+    </bpmn:serviceTask>
+  </bpmn:process>
+  <bpmn:message id="Message_1xq21zk" name="startMessage" />
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="startMessageProcess">
+      <bpmndi:BPMNEdge id="Flow_1vkm9ku_di" bpmnElement="Flow_1vkm9ku">
+        <di:waypoint x="215" y="117" />
+        <di:waypoint x="270" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_08yoywl_di" bpmnElement="Flow_08yoywl">
+        <di:waypoint x="370" y="117" />
+        <di:waypoint x="432" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Event_1qp3nia_di" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="99" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_04uso02_di" bpmnElement="Event_04uso02">
+        <dc:Bounds x="432" y="99" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0drntv5_di" bpmnElement="Activity_1yft3rn">
+        <dc:Bounds x="270" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

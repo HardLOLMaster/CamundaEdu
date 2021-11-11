@@ -1,12 +1,14 @@
 package com.github.hlam;
 
 import org.camunda.bpm.engine.*;
-import org.camunda.bpm.engine.authorization.*;
+import org.camunda.bpm.engine.authorization.Authorization;
+import org.camunda.bpm.engine.authorization.Groups;
+import org.camunda.bpm.engine.authorization.Permissions;
+import org.camunda.bpm.engine.authorization.Resources;
 import org.camunda.bpm.engine.identity.Group;
 import org.camunda.bpm.engine.identity.User;
 import org.camunda.bpm.engine.impl.cfg.ProcessEngineConfigurationImpl;
 
-import java.util.Collections;
 import java.util.List;
 
 public class MainAuthorization {

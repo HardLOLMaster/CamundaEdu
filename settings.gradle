@@ -20,6 +20,8 @@ include 'CamundaExternal'
 include 'CamundaConnector'
 include 'CamundaTransaction'
 
+include 'CamundaBatch'
+
 include 'CamundaProcessApplications'
 
 include 'CamundaBpmn'

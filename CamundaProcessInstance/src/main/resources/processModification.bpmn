@@ -8,13 +8,13 @@
     <bpmn:exclusiveGateway id="gateway">
       <bpmn:incoming>Flow_0a9mccr</bpmn:incoming>
       <bpmn:outgoing>Flow_1dbbn9i</bpmn:outgoing>
-      <bpmn:outgoing>Flow_1b0n92j</bpmn:outgoing>
+      <bpmn:outgoing>transitionC</bpmn:outgoing>
     </bpmn:exclusiveGateway>
     <bpmn:sequenceFlow id="Flow_0yszaan" sourceRef="activityASub" targetRef="activityA" />
     <bpmn:sequenceFlow id="Flow_1dbbn9i" sourceRef="gateway" targetRef="activityBSub">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${b}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
-    <bpmn:sequenceFlow id="Flow_1b0n92j" sourceRef="gateway" targetRef="activityCSub">
+    <bpmn:sequenceFlow id="transitionC" sourceRef="gateway" targetRef="activityCSub">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${!b}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:endEvent id="endC">
@@ -34,7 +34,7 @@
       <bpmn:outgoing>Flow_0h2og7h</bpmn:outgoing>
     </bpmn:serviceTask>
     <bpmn:serviceTask id="activityCSub" name="C" camunda:class="com.github.hlam.DelegateC">
-      <bpmn:incoming>Flow_1b0n92j</bpmn:incoming>
+      <bpmn:incoming>transitionC</bpmn:incoming>
       <bpmn:outgoing>Flow_118add9</bpmn:outgoing>
     </bpmn:serviceTask>
     <bpmn:sequenceFlow id="Flow_0a9mccr" sourceRef="activityA" targetRef="gateway" />
@@ -67,7 +67,7 @@
         <di:waypoint x="605" y="117" />
         <di:waypoint x="660" y="117" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1b0n92j_di" bpmnElement="Flow_1b0n92j">
+      <bpmndi:BPMNEdge id="Flow_1b0n92j_di" bpmnElement="transitionC">
         <di:waypoint x="580" y="142" />
         <di:waypoint x="580" y="230" />
         <di:waypoint x="660" y="230" />

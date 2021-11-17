@@ -20,17 +20,19 @@ public class MainProcessModification {
 
         RuntimeService runtimeService = processEngine.getRuntimeService();
         ProcessInstance processInstance;
-        processInstance = runtimeService.startProcessInstanceByKey("processModification");
 
+        processInstance = runtimeService.startProcessInstanceByKey("processModification");
+        printNumberOfRunningProcesses(runtimeService);
         runtimeService.createProcessInstanceModification(processInstance.getId())
                 .cancelAllForActivity("activityA")
                 .startBeforeActivity("activityBSub")
                 .execute();
-
         completeTask(processEngine.getTaskService());
-        System.out.println(runtimeService.createProcessInstanceQuery().count());
+        printNumberOfRunningProcesses(runtimeService);
         System.out.println();
+
         processInstance = runtimeService.startProcessInstanceByKey("processModification");
+        printNumberOfRunningProcesses(runtimeService);
         runtimeService.createProcessInstanceModification(processInstance.getId())
                 .cancelAllForActivity("activityA")
                 .startBeforeActivity("activityASub")
@@ -42,11 +44,22 @@ public class MainProcessModification {
                 .cancelAllForActivity("activityC")
                 .startAfterActivity("activityB")
                 .execute();
+        printNumberOfRunningProcesses(runtimeService);
+        System.out.println();
 
-//        completeTask(processEngine.getTaskService());
-        System.out.println(runtimeService.createProcessInstanceQuery().count());
+        runtimeService.createProcessInstanceByKey("processModification")
+                .startBeforeActivity("activityB")
+                .execute();
+        printNumberOfRunningProcesses(runtimeService);
+        System.out.println("Complete task");
+        completeTask(processEngine.getTaskService());
+        printNumberOfRunningProcesses(runtimeService);
 
         processEngine.close();
+    }
+
+    private static void printNumberOfRunningProcesses(RuntimeService runtimeService) {
+        System.out.println("Number of running processes = " + runtimeService.createProcessInstanceQuery().count());
     }
 
     private static void completeTask(TaskService taskService) {

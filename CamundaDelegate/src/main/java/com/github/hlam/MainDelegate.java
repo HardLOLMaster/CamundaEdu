@@ -7,6 +7,7 @@ import java.util.Map;
 
 public class MainDelegate {
     public static void main(String[] args) {
+        //TODO expand on Tasks and Errors
         ProcessEngine processEngine = ProcessEngineConfiguration
                 .createStandaloneInMemProcessEngineConfiguration()
                 .buildProcessEngine();

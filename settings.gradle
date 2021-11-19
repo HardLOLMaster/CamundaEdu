@@ -17,8 +17,8 @@ include 'CamundaServices:FilterService'
 include 'CamundaVariables'
 include 'CamundaProcessInstance'
 include 'CamundaDelegate'
-include 'CamundaConnector'
 include 'CamundaTransaction'
+include 'CamundaTimers'
 
 include 'CamundaBatch'
 

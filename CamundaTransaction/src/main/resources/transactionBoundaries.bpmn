@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_1dzd33j" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.10.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.15.0">
+  <bpmn:process id="transactionBoundaries" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_19jdent</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_19jdent" sourceRef="StartEvent_1" targetRef="startToWait" />
+    <bpmn:sequenceFlow id="Flow_1gkuyfl" sourceRef="startToWait" targetRef="Event_1rrw3ms" />
+    <bpmn:sequenceFlow id="Flow_1ha17hm" sourceRef="Event_1rrw3ms" targetRef="waitToAsync" />
+    <bpmn:sequenceFlow id="Flow_0dsvvew" sourceRef="waitToAsync" targetRef="asyncToEnd" />
+    <bpmn:endEvent id="Event_1jybf3o">
+      <bpmn:incoming>Flow_1ti8dep</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1ti8dep" sourceRef="asyncToEnd" targetRef="Event_1jybf3o" />
+    <bpmn:intermediateCatchEvent id="Event_1rrw3ms">
+      <bpmn:incoming>Flow_1gkuyfl</bpmn:incoming>
+      <bpmn:outgoing>Flow_1ha17hm</bpmn:outgoing>
+      <bpmn:signalEventDefinition id="SignalEventDefinition_0g9xtw9" signalRef="Signal_1rk3gii" />
+    </bpmn:intermediateCatchEvent>
+    <bpmn:serviceTask id="startToWait" camunda:class="com.github.hlam.BoundaryDelegate">
+      <bpmn:incoming>Flow_19jdent</bpmn:incoming>
+      <bpmn:outgoing>Flow_1gkuyfl</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="waitToAsync" camunda:asyncAfter="true" camunda:class="com.github.hlam.BoundaryDelegate">
+      <bpmn:incoming>Flow_1ha17hm</bpmn:incoming>
+      <bpmn:outgoing>Flow_0dsvvew</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="asyncToEnd" camunda:class="com.github.hlam.BoundaryDelegate">
+      <bpmn:incoming>Flow_0dsvvew</bpmn:incoming>
+      <bpmn:outgoing>Flow_1ti8dep</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:textAnnotation id="TextAnnotation_0hg62pi">
+      <bpmn:text>from start to wait</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_0a831pf" sourceRef="startToWait" targetRef="TextAnnotation_0hg62pi" />
+    <bpmn:textAnnotation id="TextAnnotation_1nddrbr">
+      <bpmn:text>wait</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_0dhe7oz" sourceRef="Event_1rrw3ms" targetRef="TextAnnotation_1nddrbr" />
+    <bpmn:textAnnotation id="TextAnnotation_1nzesev">
+      <bpmn:text>from wait to async (after)</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_0yjj1oq" sourceRef="waitToAsync" targetRef="TextAnnotation_1nzesev" />
+    <bpmn:textAnnotation id="TextAnnotation_18j8eo2">
+      <bpmn:text>from async to end</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_0qnjyyx" sourceRef="asyncToEnd" targetRef="TextAnnotation_18j8eo2" />
+  </bpmn:process>
+  <bpmn:signal id="Signal_1rk3gii" name="signal" />
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="transactionBoundaries">
+      <bpmndi:BPMNShape id="TextAnnotation_0hg62pi_di" bpmnElement="TextAnnotation_0hg62pi">
+        <dc:Bounds x="370" y="50" width="100" height="40" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_1nddrbr_di" bpmnElement="TextAnnotation_1nddrbr">
+        <dc:Bounds x="460" y="280" width="100" height="30" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_1nzesev_di" bpmnElement="TextAnnotation_1nzesev">
+        <dc:Bounds x="630" y="50" width="100" height="40" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_18j8eo2_di" bpmnElement="TextAnnotation_18j8eo2">
+        <dc:Bounds x="800" y="50" width="100" height="40" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_19jdent_di" bpmnElement="Flow_19jdent">
+        <di:waypoint x="215" y="177" />
+        <di:waypoint x="270" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1gkuyfl_di" bpmnElement="Flow_1gkuyfl">
+        <di:waypoint x="370" y="177" />
+        <di:waypoint x="432" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1ha17hm_di" bpmnElement="Flow_1ha17hm">
+        <di:waypoint x="468" y="177" />
+        <di:waypoint x="530" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0dsvvew_di" bpmnElement="Flow_0dsvvew">
+        <di:waypoint x="630" y="177" />
+        <di:waypoint x="700" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1ti8dep_di" bpmnElement="Flow_1ti8dep">
+        <di:waypoint x="800" y="177" />
+        <di:waypoint x="872" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1jybf3o_di" bpmnElement="Event_1jybf3o">
+        <dc:Bounds x="872" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0g8mv6n_di" bpmnElement="Event_1rrw3ms">
+        <dc:Bounds x="432" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_10c36jp_di" bpmnElement="startToWait">
+        <dc:Bounds x="270" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1ix24fa_di" bpmnElement="waitToAsync">
+        <dc:Bounds x="530" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0x6hrc8_di" bpmnElement="asyncToEnd">
+        <dc:Bounds x="700" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Association_0a831pf_di" bpmnElement="Association_0a831pf">
+        <di:waypoint x="356" y="137" />
+        <di:waypoint x="398" y="90" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_0dhe7oz_di" bpmnElement="Association_0dhe7oz">
+        <di:waypoint x="458" y="193" />
+        <di:waypoint x="502" y="280" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_0yjj1oq_di" bpmnElement="Association_0yjj1oq">
+        <di:waypoint x="616" y="137" />
+        <di:waypoint x="658" y="90" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_0qnjyyx_di" bpmnElement="Association_0qnjyyx">
+        <di:waypoint x="786" y="137" />
+        <di:waypoint x="828" y="90" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

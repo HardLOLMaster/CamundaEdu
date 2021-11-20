@@ -19,9 +19,6 @@ include 'CamundaProcessInstance'
 include 'CamundaDelegate'
 include 'CamundaTransaction'
 include 'CamundaIncidents'
-include 'CamundaErrorHandling'
-
-include 'CamundaBatch'
 
 include 'CamundaProcessApplications'
 

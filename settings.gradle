@@ -23,6 +23,11 @@ include 'CamundaIncidents'
 include 'CamundaProcessApplications'
 
 include 'CamundaBpmn'
+include 'CamundaBpmn:Tasks:ServiceTask'
+//include 'CamundaBpmn:Tasks:SendTask' like ServiceTask
+include 'CamundaBpmn:Tasks:UserTask'
 include 'CamundaTimers'
 
 include 'CamundaSpring'
+
+include 'WebServer'

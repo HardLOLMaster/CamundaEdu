@@ -5,11 +5,9 @@ import org.camunda.bpm.engine.ProcessEngineConfiguration;
 import org.camunda.bpm.engine.RepositoryService;
 import org.camunda.bpm.engine.RuntimeService;
 import org.camunda.bpm.engine.TaskService;
-import org.camunda.bpm.engine.delegate.DelegateExecution;
-import org.camunda.bpm.engine.delegate.JavaDelegate;
 import org.camunda.bpm.engine.task.Task;
 
-public class MainUserTask implements JavaDelegate {
+public class MainUserTask {
     public static void main(String[] args) {
         ProcessEngine processEngine = ProcessEngineConfiguration
             .createStandaloneInMemProcessEngineConfiguration()
@@ -28,10 +26,5 @@ public class MainUserTask implements JavaDelegate {
         taskService.complete(task.getId());
 
         processEngine.close();
-    }
-
-    @Override
-    public void execute(DelegateExecution execution) {
-        System.out.println(getClass());
     }
 }

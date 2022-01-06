@@ -26,6 +26,7 @@ include 'CamundaBpmn'
 include 'CamundaBpmn:Tasks:ServiceTask'
 //include 'CamundaBpmn:Tasks:SendTask' like ServiceTask
 include 'CamundaBpmn:Tasks:UserTask'
+include 'CamundaBpmn:Tasks:ReceiveTask'
 include 'CamundaTimers'
 
 include 'CamundaSpring'

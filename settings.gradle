@@ -28,6 +28,7 @@ include 'CamundaBpmn:Tasks:ServiceTask'
 include 'CamundaBpmn:Tasks:UserTask'
 include 'CamundaBpmn:Tasks:ReceiveTask'
 include 'CamundaBpmn:Tasks:ManualTask'
+include 'CamundaBpmn:Tasks:TaskMarkers'
 include 'CamundaTimers'
 
 include 'CamundaSpring'

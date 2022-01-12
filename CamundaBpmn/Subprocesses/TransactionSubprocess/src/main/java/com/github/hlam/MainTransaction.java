@@ -22,7 +22,10 @@ public class MainTransaction {
             .addClasspathResource("transaction.bpmn")
             .deploy();
 
-        processEngine.getRuntimeService().startProcessInstanceByKey("transaction", Map.of("cancel", true));
+        processEngine.getRuntimeService().startProcessInstanceByKey("transaction", Map.of(
+            "cancel", true,
+            "compensation", false
+        ));
         System.out.println("***");
         processEngine.getRuntimeService().startProcessInstanceByKey("transaction", Map.of(
             "cancel", false,
